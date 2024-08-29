@@ -28,7 +28,7 @@ This project is a full-stack web application for managing blog posts. It feature
 
 ### Backend Setup
 1. Clone the repository:
-git clone https://github.com/your-username/blog-post-management.git
+git clone https://github.com/kamaldev-hub/Masterblog-API
 cd blog-post-management
 
 
