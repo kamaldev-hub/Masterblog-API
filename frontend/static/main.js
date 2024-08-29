@@ -27,8 +27,12 @@ function loadPosts() {
             data.forEach(post => {
                 const postDiv = document.createElement('div');
                 postDiv.className = 'post';
-                postDiv.innerHTML = `<h2>${post.title}</h2><p>${post.content}</p>
-                <button onclick="deletePost(${post.id})">Delete</button>`;
+                postDiv.innerHTML = `
+                    <h2>${post.title}</h2>
+                    <p>${post.content}</p>
+                    <p><strong>Author:</strong> ${post.author}</p>
+                    <p><strong>Date:</strong> ${post.date}</p>
+                    <button onclick="deletePost(${post.id})">Delete</button>`;
                 postContainer.appendChild(postDiv);
             });
         })
@@ -41,12 +45,19 @@ function addPost() {
     var baseUrl = document.getElementById('api-base-url').value;
     var postTitle = document.getElementById('post-title').value;
     var postContent = document.getElementById('post-content').value;
+    var postAuthor = document.getElementById('post-author').value;
+    var postDate = document.getElementById('post-date').value;
 
     // Use the Fetch API to send a POST request to the /posts endpoint
     fetch(baseUrl + '/posts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: postTitle, content: postContent })
+        body: JSON.stringify({
+            title: postTitle,
+            content: postContent,
+            author: postAuthor,
+            date: postDate
+        })
     })
     .then(response => response.json())  // Parse the JSON data from the response
     .then(post => {
@@ -69,4 +80,34 @@ function deletePost(postId) {
         loadPosts(); // Reload the posts after deleting one
     })
     .catch(error => console.error('Error:', error));  // If an error occurs, log it to the console
+}
+
+// Function to search posts
+function searchPosts() {
+    var baseUrl = document.getElementById('api-base-url').value;
+    var searchQuery = document.getElementById('search-input').value.toLowerCase();
+
+    fetch(baseUrl + '/posts')
+        .then(response => response.json())
+        .then(data => {
+            const postContainer = document.getElementById('post-container');
+            postContainer.innerHTML = '';
+
+            data.forEach(post => {
+                if (post.title.toLowerCase().includes(searchQuery) ||
+                    post.content.toLowerCase().includes(searchQuery) ||
+                    post.author.toLowerCase().includes(searchQuery)) {
+                    const postDiv = document.createElement('div');
+                    postDiv.className = 'post';
+                    postDiv.innerHTML = `
+                        <h2>${post.title}</h2>
+                        <p>${post.content}</p>
+                        <p><strong>Author:</strong> ${post.author}</p>
+                        <p><strong>Date:</strong> ${post.date}</p>
+                        <button onclick="deletePost(${post.id})">Delete</button>`;
+                    postContainer.appendChild(postDiv);
+                }
+            });
+        })
+        .catch(error => console.error('Error:', error));
 }

@@ -26,7 +26,8 @@ body {
 }
 
 .input-field input,
-.input-field button {
+.input-field button,
+.input-field textarea {
     height: 40px;
     padding: 10px;
     font-size: 16px;
@@ -36,12 +37,20 @@ body {
     transition: box-shadow 0.5s ease;
 }
 
-.input-field input {
+.input-field input,
+.input-field textarea {
     flex-grow: 1;
     margin-right: 10px;
 }
 
-.input-field input::placeholder {
+.input-field textarea {
+    height: auto;
+    min-height: 100px;
+    resize: vertical;
+}
+
+.input-field input::placeholder,
+.input-field textarea::placeholder {
     color: #aaa;
 }
 
