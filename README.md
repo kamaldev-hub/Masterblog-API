@@ -32,26 +32,19 @@ git clone https://github.com/kamaldev-hub/Masterblog-API
 cd blog-post-management
 
 
-Kopieren
-
 2. Set up a virtual environment (optional but recommended):
 python -m venv venv
 source venv/bin/activate # On Windows use venv\Scripts\activate
 
 
-Kopieren
-
 3. Install required packages:
 pip install -r requirements.txt
 
 
-Kopieren
-
 4. Run the Flask application:
 python app.py
 
-
-Kopieren
+   
 The backend server will start running on `http://localhost:5002`.
 
 ### Frontend Setup
@@ -59,14 +52,12 @@ The backend server will start running on `http://localhost:5002`.
 cd frontend
 
 
-Kopieren
-
 2. Run the frontend application:
 python frontend_app.py
 
 angelscript
 
-Kopieren
+
 The frontend server will start running on `http://localhost:5001`.
 
 ## Usage
