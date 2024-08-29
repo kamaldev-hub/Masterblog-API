@@ -29,7 +29,6 @@ This project is a full-stack web application for managing blog posts. It feature
 ### Backend Setup
 1. Clone the repository:
 git clone https://github.com/kamaldev-hub/Masterblog-API
-cd blog-post-management
 
 
 2. Set up a virtual environment (optional but recommended):
@@ -54,8 +53,6 @@ cd frontend
 
 2. Run the frontend application:
 python frontend_app.py
-
-angelscript
 
 
 The frontend server will start running on `http://localhost:5001`.
